@@ -102,6 +102,8 @@ jupyter notebook main.ipynb
 2. **Run All Cells**: Klik `Cell` → `Run All` atau tekan `Shift + Enter` pada setiap cell
 3. **Lihat Hasil**: Prediksi akan muncul di output terakhir
 
+Atau bisa juga langsung menjalankan kode "Predict With GUI.py" untuk mencoba aplikasi jadi
+
 <h3 align="center">Konfigurasi</h3>
 
 Anda dapat mengubah parameter di cell "Konfig":
