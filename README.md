@@ -5,64 +5,64 @@
 ![Python Version](https://img.shields.io/badge/python-3.12.1-blue.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 
-**Prediksi harga BNB/USDT menggunakan Machine Learning dengan Linear Regression**
+**BNB/USDT Price Prediction Using Machine Learning with Linear Regression**
 
 [Fitur](#-fitur) • [Instalasi](#-instalasi) • [Penggunaan](#-penggunaan) • [Catatan Penting](#-catatan-penting)
 
 </div>
 
 ---
-<h1 align="center">Tentang Proyek</h1>
+<h1 align="center">About Project</h1>
 
 
-Proyek ini adalah sistem prediksi harga cryptocurrency BNB (Binance Coin) menggunakan algoritma **Linear Regression**. Sistem ini mengambil data historis dari Binance API, melatih model machine learning, dan memprediksi pergerakan harga berikutnya.
+This project is a cryptocurrency price prediction system for BNB (Binance Coin) using the **Linear Regression** algorithm. The system retrieves historical data from the Binance API, trains a machine learning model, and predicts the next price movement.
 
-### Keunggulan
+### Advantages
 
--  **Real-time Data**: Menggunakan Binance API untuk data terkini
--  **Visualisasi Interaktif**: Grafik harga dan volume yang menarik
--  **Model Evaluasi**: Metrik lengkap (MSE, RMSE, MAE, MAPE)
--  **Easy to Use**: Jupyter Notebook yang user-friendly
--  **Akurat**: Training dengan 1000 data historis
+-  **Real-time Data**: Uses the Binance API for up-to-date data  
+-  **Interactive Visualization**: Attractive price and volume charts  
+-  **Model Evaluation**: Complete metrics (MSE, RMSE, MAE, MAPE)  
+-  **Easy to Use**: User-friendly Jupyter Notebook  
+-  **Accurate**: Trained with 1000 historical data points  
 
 ---
 
-<h1 align="center">Fitur</h1>
+<h1 align="center">Features</h1>
 
 ### Data Analysis
-- Fetch data historis hingga 1000 hari dari Binance
-- Validasi dan cleaning data otomatis
-- Exploratory Data Analysis (EDA) lengkap
-- Analisis korelasi antar fitur
+- Fetch up to 1000 days of historical data from Binance  
+- Automatic data validation and cleaning  
+- Comprehensive Exploratory Data Analysis (EDA)  
+- Correlation analysis between features  
 
 ### Machine Learning
-- Linear Regression model
-- Train-test split (80:20)
-- Multiple metrics evaluation
-- Feature engineering
+- Linear Regression model  
+- Train-test split (80:20)  
+- Multiple evaluation metrics  
+- Feature engineering  
 
-### Visualisasi
-- Grafik harga historis dengan rentang high-low
-- Volume trading bar chart
-- Perbandingan prediksi vs aktual
-- Scatter plot untuk evaluasi model
-- Proyeksi harga 30 hari terakhir
+### Visualization
+- Historical price chart with high-low range  
+- Trading volume bar chart  
+- Prediction vs actual comparison  
+- Scatter plot for model evaluation  
+- 30-day price projection  
 
-### Prediksi
-- Prediksi harga hari berikutnya
-- Persentase perubahan
-- Indikator naik/turun
-- Real-time price fetching
+### Prediction
+- Next-day price prediction  
+- Percentage change  
+- Up/down indicator  
+- Real-time price fetching  
 
 ---
-<h1 align="center">Instalasi</h1>
+<h1 align="center">Installation</h1>
 
 ### Prerequisites
 
-Pastikan Anda sudah menginstal:
-- Python 3.12.1
-- pip (Python package manager)
-- Jupyter Notebook atau JupyterLab
+Make sure you have installed:
+- Python 3.12.1  
+- pip (Python package manager)  
+- Jupyter Notebook or JupyterLab  
 
 ### Step 1: Clone Repository
 
@@ -81,81 +81,80 @@ pip install scikit-learn==1.6.1
 pip install matplotlib==3.8.2
 ```
 
-**Atau install semua sekaligus:**
+**Or install everything at once:**
 
 ```bash
 pip install pandas==2.3.3 numpy==1.26.4 requests==2.32.3 scikit-learn==1.6.1 matplotlib==3.8.2
 ```
 
-### Step 3: Jalankan Jupyter Notebook
+### Step 3: Run Jupyter Notebook
 
 ```bash
 jupyter notebook main.ipynb
 ```
 
 ---
-<h1 align="center">Penggunaan</h1>
+<h1 align="center">Usage</h1>
 
 <h3 align="center">Quick Start</h3>
 
-1. **Buka Jupyter Notebook**: Jalankan `main.ipynb`
-2. **Run All Cells**: Klik `Cell` → `Run All` atau tekan `Shift + Enter` pada setiap cell
-3. **Lihat Hasil**: Prediksi akan muncul di output terakhir
+1. **Open Jupyter Notebook**: Run `main.ipynb`
+2. **Run All Cells**: Click `Cell` → `Run All` or press `Shift + Enter` on each cell
+3. **View Results**: The prediction will appear in the last output
 
-Atau bisa juga langsung menjalankan kode "Predict With GUI.py" untuk mencoba aplikasi jadi
+You can also directly run the file "Predict With GUI.py" to try the finished application
 
-<h3 align="center">Konfigurasi</h3>
+<h3 align="center">Configuration</h3>
 
-Anda dapat mengubah parameter di cell "Konfig":
+You can modify the parameters in the "Config" cell:
 
 ```python
-SYMBOL = 'BNBUSDT'    # Pasangan trading (default: BNB/USDT)
-INTERVAL = '1d'       # Interval data (1m, 5m, 1h, 1d, dll)
-LIMIT = 1000          # Jumlah data historis (max: 1000)
+SYMBOL = 'BNBUSDT'    # Trading pair (default: BNB/USDT)
+INTERVAL = '1d'       # Data interval (1m, 5m, 1h, 1d, etc.)
+LIMIT = 1000          # Number of historical data points (max: 1000)
 ```
 
 <h3 align="center">Workflow</h3>
 
 <div align="center">
 
-Fetch Data Historis  
-↓  
-Data Validation & Cleaning  
-↓  
-Exploratory Data Analysis  
-↓  
-Feature Engineering  
-↓  
-Model Training (Linear Regression)  
-↓  
-Model Evaluation  
-↓  
-Price Prediction  
-↓  
-Visualization  
-
+Fetch Historical Data
+↓
+Data Validation & Cleaning
+↓
+Exploratory Data Analysis
+↓
+Feature Engineering
+↓
+Model Training (Linear Regression)
+↓
+Model Evaluation
+↓
+Price Prediction
+↓
+Visualization
 </div>
 
 ---
 
-## Output Contoh
+## Sample Output
 
-### Hasil Prediksi
+### Prediction Result
 
 ```
 ============================================================
-HASIL PREDIKSI
+Prediction Result
 ============================================================
-Harga saat ini: 948.90 USDT
-Prediksi harga berikutnya: 945.32 USDT
-Turun 0.38%
+Current price: 948.90 USDT
+Next predicted price: 945.32 USDT
+Down 0.38%
 ============================================================
 ```
 
-### Metrik Evaluasi
+### Evaluation Metrics
 
 ```
-Evaluasi Model:
+Model Evaluation:
 Mean Squared Error (MSE): 849.41
 Root Mean Squared Error (RMSE): 29.14
 Mean Absolute Error (MAE): 17.44
@@ -164,76 +163,74 @@ Mean Absolute Percentage Error (MAPE): 1.93%
 
 ---
 
-## Catatan Penting
+## Important Notes
 
-### Untuk Pengguna di Indonesia
+### For Users in Indonesia
 
-> **PENTING**: Binance diblokir sebagian di Indonesia. Sangat disarankan menggunakan **VPN** untuk mengakses Binance API.
+> **IMPORTANT**: Binance is partially blocked in Indonesia. It is highly recommended to use a VPN to access the Binance API
 
-**Rekomendasi VPN:**
-- ProtonVPN (Free tier tersedia)
-- TunnelBear (yang saya gunakan)
+**Recommended VPNs:**
+- ProtonVPN (Free tier available)
+- TunnelBear (the one I use)
 - Windscribe
 
-**Cara Menggunakan:**
-1. Install dan aktifkan VPN
-2. Pilih server di negara yang tidak memblokir Binance (Singapore, Thailand, Malaysia, dll)
-3. Jalankan notebook setelah VPN terhubung
+**How to Use:**
+1. Install and activate a VPN
+2. Select a server in a country that does not block Binance (Singapore, Thailand, Malaysia, etc.)
+3. Run the notebook after the VPN is connected
 
-### Keamanan
+### Security
 
--  Proyek ini **TIDAK memerlukan API Key**
--  Hanya menggunakan public endpoint Binance
--  Tidak ada transaksi trading
+-  This project DOES NOT require an API Key
+-  Only uses Binance public endpoints
+-  No trading transactions
 -  Read-only data fetching
 
-### Limitasi
+### Limitations
 
-- Rate limit Binance API: 1200 requests/minute
-- Data historis maksimal: 1000 candles per request
-- Model ini untuk **edukasi**, bukan financial advice
+- Binance API rate limit: 1200 requests/minute
+- Maximum historical data: 1000 candles per request
+- This model is for education, not financial advice
 - Past performance ≠ Future results
-
 ---
 
-## Penjelasan Teknis
+## Technical Explanation
 
 ### Model: Linear Regression
 
-Linear Regression digunakan karena:
-- Sederhana dan cepat untuk training
-- Bagus untuk trend analysis
-- Mudah diinterpretasi
-- Cocok untuk data time series yang relatif stabil
+Linear Regression is used because:
+- Simple and fast to train
+- Good for trend analysis
+- Easy to interpret
+- Suitable for relatively stable time series data
 
 ### Features yang Digunakan
 
-| Feature | Deskripsi |
+| Feature | Description |
 |---------|-----------|
-| `close` | Harga penutupan |
-| `open` | Harga pembukaan |
-| `high` | Harga tertinggi |
-| `low` | Harga terendah |
-| `volume` | Volume trading |
+| `close` | Closing price |
+| `open` | Opening price |
+| `high` | Highest price |
+| `low` | Lowest price |
+| `volume` | Trading volume |
 
 ### Target Variable
 
-- `next_close`: Harga penutupan hari berikutnya
+- `next_close`: Next day closing price
 
 ---
 
 
 ## Disclaimer
 
-> **PERINGATAN**: Proyek ini dibuat untuk tujuan **EDUKASI** dan **PEMBELAJARAN** machine learning.
-> 
-> -  BUKAN financial advice
-> -  BUKAN rekomendasi trading
-> -  Tidak bertanggung jawab atas kerugian trading
-> -  Gunakan dengan risiko Anda sendiri
-> -  Selalu lakukan riset sendiri (DYOR)
+> **WARNING**: This project is created for **EDUCATIONAL** and **LEARNING** purposes in machine learning.
+> -  NOT financial advice
+> -  NOT a trading recommendation
+> -  No responsibility for trading losses
+> -  Use at your own risk
+> -  Always do your own research (DYOR)
 
-**Cryptocurrency trading mengandung risiko tinggi. Jangan investasi lebih dari yang Anda mampu kehilangan.**
+**Cryptocurrency trading involves high risk. Do not invest more than you can afford to lose.**
 
 ---
 
@@ -249,7 +246,7 @@ Created with by **wahyuNurahmadinuh**
 
 <div align="center">
 
-**Jika proyek ini membantu Anda, berikan star ya!**
+**If this project helps you, please give it a star!**
 
 Made with Python and Machine Learning
 
