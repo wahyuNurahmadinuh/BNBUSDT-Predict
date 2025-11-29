@@ -21,7 +21,6 @@ class BNBPredictorGUI:
         self.root.geometry("1200x800")
         self.root.configure(bg='#1e1e2e')
         
-        # Variables
         self.symbol = tk.StringVar(value='BNBUSDT')
         self.interval = tk.StringVar(value='1d')
         self.limit = tk.IntVar(value=1000)
@@ -29,48 +28,40 @@ class BNBPredictorGUI:
         self.model = None
         self.is_training = False
         
-        # Setup GUI
         self.setup_ui()
         
     def setup_ui(self):
-        # Header
         header_frame = tk.Frame(self.root, bg='#2d2d44', height=80)
         header_frame.pack(fill='x', padx=10, pady=10)
         header_frame.pack_propagate(False)
         
-        title_label = tk.Label(header_frame, text="🚀 BNB Price Predictor", 
+        title_label = tk.Label(header_frame, text="BNB Price Predictor", 
                                font=('Arial', 24, 'bold'), 
                                bg='#2d2d44', fg='#f9e2af')
         title_label.pack(pady=20)
         
-        # Main container
         main_container = tk.Frame(self.root, bg='#1e1e2e')
         main_container.pack(fill='both', expand=True, padx=10, pady=5)
         
-        # Left panel - Controls
         left_panel = tk.Frame(main_container, bg='#2d2d44', width=300)
         left_panel.pack(side='left', fill='y', padx=(0, 10))
         left_panel.pack_propagate(False)
         
         self.setup_controls(left_panel)
         
-        # Right panel - Charts and Results
         right_panel = tk.Frame(main_container, bg='#1e1e2e')
         right_panel.pack(side='right', fill='both', expand=True)
         
         self.setup_results(right_panel)
         
     def setup_controls(self, parent):
-        # Configuration section
         config_label = tk.Label(parent, text="Konfigurasi", 
                                font=('Arial', 14, 'bold'), 
                                bg='#2d2d44', fg='#cdd6f4')
         config_label.pack(pady=(20, 10))
         
-        # Symbol
         self.create_input_field(parent, "Symbol:", self.symbol)
         
-        # Interval
         interval_frame = tk.Frame(parent, bg='#2d2d44')
         interval_frame.pack(fill='x', padx=20, pady=5)
         tk.Label(interval_frame, text="Interval:", 
@@ -80,35 +71,32 @@ class BNBPredictorGUI:
                                      state='readonly', width=25)
         interval_combo.pack(fill='x', pady=2)
         
-        # Limit
         self.create_input_field(parent, "Data Limit:", self.limit)
         
-        # Buttons
         btn_frame = tk.Frame(parent, bg='#2d2d44')
         btn_frame.pack(fill='x', padx=20, pady=20)
         
-        self.fetch_btn = tk.Button(btn_frame, text="📥 Fetch Data", 
+        self.fetch_btn = tk.Button(btn_frame, text="Fetch Data", 
                                    command=self.fetch_data_thread,
                                    bg='#89b4fa', fg='#1e1e2e', 
                                    font=('Arial', 11, 'bold'),
                                    relief='flat', cursor='hand2')
         self.fetch_btn.pack(fill='x', pady=5)
         
-        self.train_btn = tk.Button(btn_frame, text="🎯 Train Model", 
+        self.train_btn = tk.Button(btn_frame, text="Train Model", 
                                    command=self.train_model_thread,
                                    bg='#a6e3a1', fg='#1e1e2e', 
                                    font=('Arial', 11, 'bold'),
                                    relief='flat', cursor='hand2', state='disabled')
         self.train_btn.pack(fill='x', pady=5)
         
-        self.predict_btn = tk.Button(btn_frame, text="🔮 Predict Price", 
+        self.predict_btn = tk.Button(btn_frame, text="Predict Price", 
                                      command=self.predict_price_thread,
                                      bg='#f9e2af', fg='#1e1e2e', 
                                      font=('Arial', 11, 'bold'),
                                      relief='flat', cursor='hand2', state='disabled')
         self.predict_btn.pack(fill='x', pady=5)
         
-        # Status
         status_label = tk.Label(parent, text="Status", 
                                font=('Arial', 12, 'bold'), 
                                bg='#2d2d44', fg='#cdd6f4')
@@ -132,11 +120,9 @@ class BNBPredictorGUI:
         entry.pack(fill='x', pady=2, ipady=5)
         
     def setup_results(self, parent):
-        # Notebook for tabs
         self.notebook = ttk.Notebook(parent)
         self.notebook.pack(fill='both', expand=True)
         
-        # Style
         style = ttk.Style()
         style.theme_use('default')
         style.configure('TNotebook', background='#1e1e2e', borderwidth=0)
@@ -145,17 +131,15 @@ class BNBPredictorGUI:
         style.map('TNotebook.Tab', background=[('selected', '#89b4fa')],
                  foreground=[('selected', '#1e1e2e')])
         
-        # Chart tab
         chart_frame = tk.Frame(self.notebook, bg='#1e1e2e')
-        self.notebook.add(chart_frame, text='📊 Charts')
+        self.notebook.add(chart_frame, text='Charts')
         
         self.figure = Figure(figsize=(10, 6), facecolor='#1e1e2e')
         self.canvas = FigureCanvasTkAgg(self.figure, chart_frame)
         self.canvas.get_tk_widget().pack(fill='both', expand=True)
         
-        # Results tab
         results_frame = tk.Frame(self.notebook, bg='#1e1e2e')
-        self.notebook.add(results_frame, text='📈 Results')
+        self.notebook.add(results_frame, text='Results')
         
         self.results_text = scrolledtext.ScrolledText(results_frame, 
                                                       bg='#181825', fg='#cdd6f4',
@@ -198,14 +182,12 @@ class BNBPredictorGUI:
             for col in ['open', 'high', 'low', 'close', 'volume']:
                 self.df[col] = self.df[col].astype(float)
             
-            # Validate and clean
             self.df = self.df.dropna()
             self.df = self.df.sort_values('timestamp').reset_index(drop=True)
             
             self.log_status(f"✓ Successfully fetched {len(self.df)} data points")
             self.train_btn.config(state='normal')
             
-            # Plot data
             self.plot_historical_data()
             
         except Exception as e:
@@ -251,22 +233,18 @@ class BNBPredictorGUI:
             self.train_btn.config(state='disabled')
             self.log_status("Training model...")
             
-            # Prepare data
             self.df['next_close'] = self.df['close'].shift(-1)
             df_train = self.df[:-1].copy()
             
             X = df_train[['close', 'open', 'high', 'low', 'volume']].values
             y = df_train['next_close'].values
             
-            # Split data
             X_train, X_test, y_train, y_test = train_test_split(
                 X, y, test_size=0.2, random_state=42, shuffle=False)
             
-            # Train model
             self.model = LinearRegression()
             self.model.fit(X_train, y_train)
             
-            # Evaluate
             y_pred = self.model.predict(X_test)
             mse = mean_squared_error(y_test, y_pred)
             rmse = np.sqrt(mse)
@@ -276,7 +254,6 @@ class BNBPredictorGUI:
             self.log_status(f"✓ Model trained successfully")
             self.log_status(f"  RMSE: {rmse:.2f}, MAE: {mae:.2f}, MAPE: {mape:.2f}%")
             
-            # Display results
             results = f"""
 {'='*60}
 MODEL TRAINING RESULTS
@@ -306,7 +283,6 @@ Model Coefficients:
             self.results_text.delete(1.0, 'end')
             self.results_text.insert(1.0, results)
             
-            # Plot predictions
             self.plot_predictions(y_test, y_pred)
             
             self.predict_btn.config(state='normal')
@@ -357,7 +333,6 @@ Model Coefficients:
             self.predict_btn.config(state='disabled')
             self.log_status("Fetching real-time price...")
             
-            # Get real-time price
             url = "https://api.binance.com/api/v3/ticker/price"
             params = {'symbol': self.symbol.get()}
             response = requests.get(url, params=params, timeout=10)
@@ -366,7 +341,6 @@ Model Coefficients:
             
             self.log_status(f"Current price: {current_price:.2f} USDT")
             
-            # Prepare features
             last_row = self.df.iloc[-1]
             features = np.array([[
                 current_price,
@@ -376,14 +350,12 @@ Model Coefficients:
                 last_row['volume']
             ]])
             
-            # Predict
             predicted_price = self.model.predict(features)[0]
             change_pct = ((predicted_price - current_price) / current_price) * 100
-            direction = "📈 UP" if change_pct > 0 else "📉 DOWN"
+            direction = "UP" if change_pct > 0 else "DOWN"
             
             self.log_status(f"Predicted price: {predicted_price:.2f} USDT ({direction})")
             
-            # Display prediction
             prediction_result = f"""
 {'='*60}
 PRICE PREDICTION RESULT
@@ -408,7 +380,7 @@ Input Features Used:
 
 {'='*60}
 
-⚠️  DISCLAIMER:
+DISCLAIMER:
 This prediction is based on historical data and linear regression.
 Cryptocurrency markets are highly volatile and unpredictable.
 Always do your own research before making investment decisions.
@@ -418,7 +390,6 @@ Always do your own research before making investment decisions.
             self.results_text.delete(1.0, 'end')
             self.results_text.insert(1.0, prediction_result)
             
-            # Plot prediction
             self.plot_prediction_chart(current_price, predicted_price)
             
         except Exception as e:
